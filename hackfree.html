@@ -42,7 +42,6 @@
             margin-bottom: 30px; text-shadow: 0 0 15px var(--neon-green);
         }
 
-        /* Tabs chọn hệ điều hành */
         .os-tabs { display: flex; gap: 12px; margin-bottom: 35px; }
         .tab-btn {
             flex: 1; padding: 18px 10px; background: rgba(255,255,255,0.05);
@@ -67,14 +66,13 @@
         .game-logo { width: 85px; height: 85px; margin: 0 auto 15px; border-radius: 22px; object-fit: cover; display: block; border: 2px solid rgba(255,255,255,0.05); }
         .game-card h4 { margin: 0; font-family: 'Orbitron'; font-size: 11px; color: #aaa; }
 
-        /* --- PHẦN HỖ TRỢ KHÁCH HÀNG (ĐÃ FIX TO LẠI) --- */
         .support-footer {
             margin-top: 50px; padding: 25px; background: var(--glass);
             border-radius: 20px; text-align: center; border: 1px solid #111;
         }
         .sup-row { display: flex; justify-content: center; gap: 40px; margin-top: 15px; }
         .sup-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .sup-item i { font-size: 35px; } /* Trả lại 35px như cũ */
+        .sup-item i { font-size: 35px; }
         .sup-item span { font-family: 'Orbitron'; font-size: 9px; color: #555; font-weight: bold; }
         .c-fb { color: #1877f2; }
         .c-tl { color: #2ca5e0; }
@@ -86,97 +84,115 @@
 </head>
 <body>
 
-    <canvas id="snow-canvas"></canvas>
+<canvas id="snow-canvas"></canvas>
 
-    <a href="./index.html" class="home-btn">
-        <i class="fa-solid fa-house"></i> HOME
-    </a>
+<a href="./index.html" class="home-btn">
+    <i class="fa-solid fa-house"></i> HOME
+</a>
 
-    <div class="container">
-        <h1 class="header-title">FREE GAME HACK</h1>
+<div class="container">
+    <h1 class="header-title">FREE GAME HACK</h1>
 
-        <div class="os-tabs">
-            <div class="tab-btn adr-btn active" onclick="showOS('android', this)">
-                <i class="fa-brands fa-android"></i> ANDROID
-            </div>
-            <div class="tab-btn ios-btn" onclick="showOS('ios', this)">
-                <i class="fa-brands fa-apple"></i> APPLE IOS
-            </div>
+    <div class="os-tabs">
+        <div class="tab-btn adr-btn active" onclick="showOS('android', this)">
+            <i class="fa-brands fa-android"></i> ANDROID
         </div>
-
-        <div id="android-sec" class="os-section active">
-            <div class="os-label" style="color: #3DDC84;"><i class="fa-brands fa-android"></i> ANDROID SYSTEM</div>
-            <div class="game-grid">
-                <div class="game-card" onclick="openPop()"><img src="ff.png" class="game-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/5/5e/Garena_Free_fire_icon.png'"><h4>FREE FIRE</h4></div>
-                <div class="game-card" onclick="openPop()"><img src="lq.png" class="game-logo" onerror="this.src='https://image.winudf.com/v2/image1/Y29tLmdhcmVuYS5nYW1lLmtvcl9pY29uXzE2Mzc2OTk0MTNfMDY5/icon.png'"><h4>LIÊN QUÂN</h4></div>
-                <div class="game-card" onclick="openPop()"><img src="pubg.png" class="game-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/vi/0/07/PUBG_Mobile_Logo.png'"><h4>PUBG MOBILE</h4></div>
-            </div>
-        </div>
-
-        <div id="ios-sec" class="os-section">
-            <div class="os-label" style="color: #fff;"><i class="fa-brands fa-apple"></i> APPLE IOS</div>
-            <div class="game-grid">
-                <div class="game-card" onclick="openPop()"><img src="ff.png" class="game-logo"><h4>FREE FIRE</h4></div>
-                <div class="game-card" onclick="openPop()"><img src="lq.png" class="game-logo"><h4>LIÊN QUÂN</h4></div>
-            </div>
-        </div>
-
-        <div class="support-footer">
-            <span style="font-size: 10px; color: #444; letter-spacing: 2px;">LIÊN HỆ TRỢ GIÚP</span>
-            <div class="sup-row">
-                <a href="https://www.facebook.com/xem.phim.sex.18.mup" target="_blank" class="sup-item">
-                    <i class="fa-brands fa-facebook-messenger c-fb"></i>
-                    <span>FACEBOOK</span>
-                </a>
-                <a href="https://t.me/ADM_INVISIBLE" target="_blank" class="sup-item">
-                    <i class="fa-brands fa-telegram c-tl"></i>
-                    <span>TELEGRAM</span>
-                </a>
-            </div>
+        <div class="tab-btn ios-btn" onclick="showOS('ios', this)">
+            <i class="fa-brands fa-apple"></i> APPLE IOS
         </div>
     </div>
 
-    <div id="popup">
-        <div class="popup-box">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size: 50px; color: var(--neon-red); margin-bottom: 20px;"></i>
-            <h2>ĐANG CẬP NHẬT</h2>
-            <p style="font-size: 13px; color: #777; line-height: 1.6; margin-bottom: 30px;">Vui lòng quay lại sau!</p>
-            <button class="close-btn" onclick="closePop()">ĐÃ HIỂU</button>
+    <div id="android-sec" class="os-section active">
+        <div class="os-label" style="color:#3DDC84;"><i class="fa-brands fa-android"></i> ANDROID SYSTEM</div>
+        <div class="game-grid">
+
+            <!-- CHỈ DÒNG NÀY ĐƯỢC ĐỔI -->
+            <div class="game-card" onclick="location.href='hackfreefire.html'">
+                <img src="ff.png" class="game-logo"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/en/5/5e/Garena_Free_fire_icon.png'">
+                <h4>FREE FIRE</h4>
+            </div>
+
+            <div class="game-card" onclick="openPop()">
+                <img src="lq.png" class="game-logo"
+                     onerror="this.src='https://image.winudf.com/v2/image1/Y29tLmdhcmVuYS5nYW1lLmtvcl9pY29uXzE2Mzc2OTk0MTNfMDY5/icon.png'">
+                <h4>LIÊN QUÂN</h4>
+            </div>
+
+            <div class="game-card" onclick="openPop()">
+                <img src="pubg.png" class="game-logo"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/vi/0/07/PUBG_Mobile_Logo.png'">
+                <h4>PUBG MOBILE</h4>
+            </div>
+
         </div>
     </div>
 
-    <script>
-        function openPop() { document.getElementById('popup').style.display = 'flex'; }
-        function closePop() { document.getElementById('popup').style.display = 'none'; }
-        function showOS(type, element) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            document.getElementById('android-sec').classList.remove('active');
-            document.getElementById('ios-sec').classList.remove('active');
-            if(type === 'android') document.getElementById('android-sec').classList.add('active');
-            else document.getElementById('ios-sec').classList.add('active');
-        }
-        const canvas = document.getElementById('snow-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, flakes = [];
-        function initSnow() {
-            width = window.innerWidth; height = window.innerHeight;
-            canvas.width = width; canvas.height = height;
-            flakes = [];
-            for (let i = 0; i < 100; i++) {
-                flakes.push({ x: Math.random() * width, y: Math.random() * height, size: Math.random() * 2 + 1, speed: Math.random() * 0.8 + 0.2, opacity: Math.random() * 0.5 + 0.1 });
-            }
-        }
-        function drawSnow() {
-            ctx.clearRect(0, 0, width, height); ctx.fillStyle = "white";
-            flakes.forEach(f => {
-                ctx.globalAlpha = f.opacity; ctx.beginPath(); ctx.arc(f.x, f.y, f.size, 0, Math.PI * 2); ctx.fill();
-                f.y += f.speed; if (f.y > height) f.y = -10;
-            });
-            requestAnimationFrame(drawSnow);
-        }
-        window.addEventListener('resize', initSnow);
-        initSnow(); drawSnow();
-    </script>
+    <div id="ios-sec" class="os-section">
+        <div class="os-label"><i class="fa-brands fa-apple"></i> APPLE IOS</div>
+        <div class="game-grid">
+            <div class="game-card" onclick="openPop()"><img src="ff.png" class="game-logo"><h4>FREE FIRE</h4></div>
+            <div class="game-card" onclick="openPop()"><img src="lq.png" class="game-logo"><h4>LIÊN QUÂN</h4></div>
+        </div>
+    </div>
+
+    <div class="support-footer">
+        <span style="font-size:10px;color:#444;letter-spacing:2px;">LIÊN HỆ TRỢ GIÚP</span>
+        <div class="sup-row">
+            <a href="https://www.facebook.com/xem.phim.sex.18.mup" target="_blank" class="sup-item">
+                <i class="fa-brands fa-facebook-messenger c-fb"></i>
+                <span>FACEBOOK</span>
+            </a>
+            <a href="https://t.me/ADM_INVISIBLE" target="_blank" class="sup-item">
+                <i class="fa-brands fa-telegram c-tl"></i>
+                <span>TELEGRAM</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="popup">
+    <div class="popup-box">
+        <i class="fa-solid fa-triangle-exclamation" style="font-size:50px;color:var(--neon-red);margin-bottom:20px;"></i>
+        <h2>ĐANG CẬP NHẬT</h2>
+        <p style="font-size:13px;color:#777;margin-bottom:30px;">Vui lòng quay lại sau!</p>
+        <button class="close-btn" onclick="closePop()">ĐÃ HIỂU</button>
+    </div>
+</div>
+
+<script>
+    function openPop(){document.getElementById('popup').style.display='flex'}
+    function closePop(){document.getElementById('popup').style.display='none'}
+    function showOS(type,el){
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        el.classList.add('active');
+        document.getElementById('android-sec').classList.remove('active');
+        document.getElementById('ios-sec').classList.remove('active');
+        document.getElementById(type+'-sec').classList.add('active');
+    }
+
+    const canvas=document.getElementById('snow-canvas');
+    const ctx=canvas.getContext('2d');
+    let w,h,f=[];
+    function init(){
+        w=canvas.width=innerWidth;
+        h=canvas.height=innerHeight;
+        f=[];
+        for(let i=0;i<100;i++)f.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+1,s:Math.random()+.3,o:Math.random()*.5+.2});
+    }
+    function snow(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle='white';
+        f.forEach(a=>{
+            ctx.globalAlpha=a.o;
+            ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+            a.y+=a.s;if(a.y>h){a.y=-10;a.x=Math.random()*w}
+        });
+        requestAnimationFrame(snow);
+    }
+    addEventListener('resize',init);
+    init();snow();
+</script>
+
 </body>
 </html>
