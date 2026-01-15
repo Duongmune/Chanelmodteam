@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACK LIÊN QUÂN - SUPREME VERSION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lq-gold: #f3c75f;
+            --lq-blue: #00d4ff;
+            --pink-petal: #ffb7c5;
+        }
+
+        body {
+            margin: 0; padding: 0; background: #02050a;
+            color: #fff; font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        /* Nền hiệu ứng */
+        #effect-canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
+
+        .back-btn {
+            position: fixed; top: 20px; left: 20px;
+            padding: 10px 20px; background: rgba(0,0,0,0.7);
+            border: 2px solid var(--lq-gold); border-radius: 5px;
+            color: var(--lq-gold); text-decoration: none;
+            font-family: 'Orbitron'; font-size: 11px; font-weight: 900;
+            z-index: 100; transition: 0.3s;
+        }
+        .back-btn:hover { box-shadow: 0 0 20px var(--lq-gold); transform: scale(1.05); }
+
+        /* Card Liên Quân Supreme */
+        .lq-card {
+            width: 85%; max-width: 380px;
+            background: rgba(10, 20, 35, 0.85);
+            border: 1px solid rgba(243, 199, 95, 0.4);
+            border-radius: 20px; padding: 50px 30px;
+            text-align: center; backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(243, 199, 95, 0.1);
+            position: relative; z-index: 1;
+        }
+
+        /* Khung viền góc kiểu Garena */
+        .corner {
+            position: absolute; width: 30px; height: 30px; border: 3px solid var(--lq-gold);
+        }
+        .top-left { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .bottom-right { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+        .lq-logo {
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 3px solid var(--lq-gold); margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(243, 199, 95, 0.5);
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .title {
+            font-family: 'Orbitron'; font-size: 20px; font-weight: 900;
+            color: var(--lq-gold); letter-spacing: 5px; margin-bottom: 40px;
+            text-shadow: 0 0 15px rgba(243, 199, 95, 0.6);
+        }
+
+        /* Container nút bấm cân đối */
+        .btn-box { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+        .btn-lq {
+            width: 100%; max-width: 280px; padding: 18px;
+            background: linear-gradient(90deg, transparent, rgba(243, 199, 95, 0.15), transparent);
+            border: 1px solid var(--lq-gold); border-radius: 50px;
+            color: #fff; font-family: 'Orbitron'; font-size: 12px;
+            font-weight: 700; cursor: pointer; position: relative;
+            overflow: hidden; transition: 0.4s;
+        }
+        .btn-lq:hover {
+            background: var(--lq-gold); color: #000;
+            box-shadow: 0 0 30px var(--lq-gold); transform: translateY(-3px);
+        }
+
+        /* Popup */
+        #popup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none;
+            justify-content: center; align-items: center; z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+        .popup-box {
+            width: 280px; background: #0a111e; border: 2px solid var(--lq-gold);
+            padding: 30px; text-align: center; border-radius: 10px;
+        }
+        .close-btn {
+            margin-top: 20px; padding: 10px 30px; background: var(--lq-gold);
+            border: none; font-family: 'Orbitron'; font-weight: 900; cursor: pointer;
+        }
+
+        .footer { margin-top: 30px; font-size: 10px; color: #444; font-family: 'Orbitron'; letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+
+    <canvas id="effect-canvas"></canvas>
+
+    <a href="https://duongmune.github.io/Chanelmodteam/hackfree.html" class="back-btn">
+        <i class="fa-solid fa-chevron-left"></i> BACK
+    </a>
+
+    <div class="lq-card">
+        <div class="corner top-left"></div>
+        <div class="corner bottom-right"></div>
+        
+        <img src="lq.png" class="lq-logo" onerror="this.src='https://image.winudf.com/v2/image1/Y29tLmdhcmVuYS5nYW1lLmtvcl9pY29uXzE2Mzc2OTk0MTNfMDY5/icon.png'">
+        
+        <h2 class="title">LIÊN QUÂN MOBILE</h2>
+
+        <div class="btn-box">
+            <div class="btn-lq" onclick="openPop()">
+                <i class="fa-solid fa-download"></i> TẢI XUỐNG APK
+            </div>
+
+            <div class="btn-lq" onclick="openPop()">
+                <i class="fa-solid fa-key"></i> GET KEY FREE
+            </div>
+        </div>
+
+        <div class="footer">INVISIBLE MOD TEAM</div>
+    </div>
+
+    <div id="popup">
+        <div class="popup-box">
+            <h2 style="font-family: 'Orbitron'; color: var(--lq-gold); font-size: 16px;">THÔNG BÁO</h2>
+            <p style="font-size: 12px; color: #aaa;">Hệ thống đang bảo trì. Vui lòng quay lại sau!</p>
+            <button class="close-btn" onclick="closePop()">XÁC NHẬN</button>
+        </div>
+    </div>
+
+    <script>
+        function openPop() { document.getElementById('popup').style.display = 'flex'; }
+        function closePop() { document.getElementById('popup').style.display = 'none'; }
+
+        // Hiệu ứng Hoa rơi & Tàn lửa
+        const canvas = document.getElementById('effect-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, items = [];
+
+        function init() {
+            width = window.innerWidth; height = window.innerHeight;
+            canvas.width = width; canvas.height = height;
+            items = [];
+            // Tạo cánh hoa
+            for(let i=0; i<30; i++) items.push(createItem('petal'));
+            // Tạo tàn lửa
+            for(let i=0; i<50; i++) items.push(createItem('ember'));
+        }
+
+        function createItem(type) {
+            return {
+                type: type,
+                x: Math.random() * width,
+                y: type === 'petal' ? Math.random() * -height : Math.random() * height + height,
+                size: type === 'petal' ? Math.random() * 8 + 5 : Math.random() * 3 + 1,
+                speedX: Math.random() * 2 - 1,
+                speedY: type === 'petal' ? Math.random() * 1.5 + 1 : Math.random() * -2 - 1,
+                opacity: Math.random() * 0.6 + 0.2,
+                rot: Math.random() * 360,
+                rotSpeed: Math.random() * 2
+            };
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            items.forEach(p => {
+                ctx.globalAlpha = p.opacity;
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                if(p.type === 'petal') {
+                    ctx.rotate(p.rot * Math.PI / 180);
+                    ctx.fillStyle = '#ffb7c5';
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, p.size, p.size/2, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    p.rot += p.rotSpeed;
+                } else {
+                    ctx.fillStyle = '#f3c75f';
+                    ctx.shadowBlur = 10; ctx.shadowColor = '#f3c75f';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, p.size, 0, Math.PI*2);
+                    ctx.fill();
+                }
+                ctx.restore();
+
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                // Reset vị trí
+                if(p.type === 'petal' && p.y > height) p.y = -20;
+                if(p.type === 'ember' && p.y < 0) p.y = height + 20;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init(); draw();
+    </script>
+</body>
+</html>
