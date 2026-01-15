@@ -54,6 +54,7 @@
             text-shadow: 0 0 10px var(--neon-green);
             display: block;
         }
+        /* Hiệu ứng vệt sáng quét qua bảng giờ */
         .system-monitor::after {
             content: ""; position: absolute; top: 0; left: -100%;
             width: 50%; height: 100%;
@@ -88,13 +89,13 @@
         }
         .category-header::after { content: ""; flex: 1; height: 1px; background: #222; }
 
+        /* Card Style */
         .item-card {
             background: rgba(15, 20, 25, 0.9);
             border: 1px solid #1a1e23; border-radius: 12px;
             padding: 18px; margin-bottom: 12px;
             display: flex; align-items: center; cursor: pointer;
             transition: 0.3s; position: relative;
-            text-decoration: none; /* Bỏ gạch chân link */
         }
         .item-card:hover { border-color: var(--neon-green); transform: translateX(8px); background: #111a1a; }
 
@@ -155,17 +156,17 @@
 
         <div class="category-header">TÀI NGUYÊN PHẦN MỀM</div>
         
-        <a href="https://vince-unsmacked-daysi.ngrok-free.dev/hackfree.html" class="item-card">
+        <div class="item-card" onclick="alert('Bắt đầu tải bản Free...')">
             <div class="icon-circle" style="border-color: var(--neon-green);">
                 <svg fill="var(--neon-green)" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             </div>
             <div class="card-content">
                 <h4 style="color: var(--neon-green);">BẢN HACK MIỄN PHÍ</h4>
-                <p>Mở kho ứng dụng Android & iOS miễn phí.</p>
+                <p>Ổn định, chống văng, không cần Key.</p>
             </div>
-        </a>
+        </div>
 
-        <div class="item-card" onclick="alert('Tính năng VIP yêu cầu đăng nhập Admin!')">
+        <div class="item-card" onclick="alert('Đang kết nối cổng thanh toán VIP...')">
             <div class="icon-circle" style="border-color: var(--neon-gold);">
                 <svg fill="var(--neon-gold)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
@@ -178,19 +179,19 @@
         <div class="category-header">KHO KHÓA TRUY CẬP (KEYS)</div>
         
         <div class="key-grid">
-            <div class="key-btn" onclick="alert('Đang lấy Key 1h...')">
+            <div class="key-btn">
                 <svg fill="#555" width="20" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
                 <b>KEY 1 GIỜ</b>
             </div>
-            <div class="key-btn" onclick="alert('Đang lấy Key 24h...')">
+            <div class="key-btn">
                 <svg fill="#555" width="20" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
                 <b>KEY 24 GIỜ</b>
             </div>
-            <div class="key-btn" onclick="alert('Đang lấy Key 7 ngày...')">
+            <div class="key-btn">
                 <svg fill="#555" width="20" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
                 <b>KEY 7 NGÀY</b>
             </div>
-            <div class="key-btn" style="border-color: var(--neon-red);" onclick="alert('Liên hệ Admin để mua Vĩnh Viễn!')">
+            <div class="key-btn" style="border-color: var(--neon-red);">
                 <svg fill="var(--neon-red)" width="20" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                 <b style="color: var(--neon-red);">VĨNH VIỄN</b>
             </div>
@@ -219,15 +220,24 @@
     </div>
 
     <script>
+        // --- XỬ LÝ NGÀY GIỜ VIỆT NAM ---
         function updateVNTime() {
             const now = new Date();
+            
+            // Lấy Thứ, Ngày, Tháng, Năm
             const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
-            document.getElementById('vn-date').innerText = now.toLocaleDateString('vi-VN', options);
-            document.getElementById('vn-time').innerText = now.toLocaleTimeString('vi-VN', { hour12: false });
+            const dateStr = now.toLocaleDateString('vi-VN', options);
+            
+            // Lấy Giờ, Phút, Giây
+            const timeStr = now.toLocaleTimeString('vi-VN', { hour12: false });
+            
+            document.getElementById('vn-date').innerText = dateStr;
+            document.getElementById('vn-time').innerText = timeStr;
         }
         setInterval(updateVNTime, 1000);
         updateVNTime();
 
+        // --- MATRIX RAIN ---
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -236,6 +246,7 @@
         const fontSize = 10;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
+
         function drawMatrix() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
