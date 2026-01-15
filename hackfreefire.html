@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACK FREE FIRE - INVISIBLE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #00ff9d;
+            --neon-blue: #00d2ff;
+            --neon-red: #ff2e63;
+            --bg-dark: #050608;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0; background: var(--bg-dark); color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Nền hiệu ứng Moving Stars */
+        #bg-effect {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; background: radial-gradient(circle at center, #0a1520 0%, #050608 100%);
+        }
+
+        /* Nút quay lại */
+        .back-btn {
+            position: fixed; top: 20px; left: 20px;
+            padding: 10px 15px; background: var(--glass);
+            border: 1px solid var(--neon-blue); border-radius: 8px;
+            color: var(--neon-blue); text-decoration: none;
+            font-family: 'Orbitron'; font-size: 12px; font-weight: bold;
+            display: flex; align-items: center; gap: 8px;
+            backdrop-filter: blur(10px); z-index: 1000;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 20px var(--neon-blue); }
+
+        /* Card chính */
+        .hack-card {
+            width: 90%; max-width: 380px;
+            background: linear-gradient(145deg, #0f1115, #0a0c10);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 30px; padding: 40px 20px;
+            text-align: center; position: relative; z-index: 1;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .ff-logo {
+            width: 110px; height: 110px; margin: 0 auto 20px;
+            border-radius: 25px; border: 3px solid var(--neon-green);
+            box-shadow: 0 0 25px rgba(0, 255, 157, 0.4);
+            object-fit: cover; animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .title {
+            font-family: 'Orbitron'; font-size: 18px; letter-spacing: 2px;
+            color: var(--neon-green); margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .btn-container { display: flex; flex-direction: column; gap: 15px; }
+
+        .action-btn {
+            padding: 18px; border-radius: 12px;
+            text-decoration: none; font-family: 'Orbitron'; font-weight: 900;
+            font-size: 13px; letter-spacing: 1px;
+            transition: 0.3s; display: flex; align-items: center;
+            justify-content: center; gap: 10px; border: none; cursor: pointer;
+        }
+
+        .btn-apk { background: rgba(0, 210, 255, 0.1); border: 1px solid var(--neon-blue); color: var(--neon-blue); }
+        .btn-apk:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 30px var(--neon-blue); }
+
+        .btn-key { background: rgba(0, 255, 157, 0.1); border: 1px solid var(--neon-green); color: var(--neon-green); }
+        .btn-key:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 30px var(--neon-green); }
+
+        /* Popup thông báo bảo trì */
+        #popup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: none;
+            justify-content: center; align-items: center; z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+        .popup-box {
+            width: 80%; max-width: 300px; background: #0d0e12;
+            border: 2px solid var(--neon-red); border-radius: 20px;
+            padding: 35px 20px; text-align: center;
+            box-shadow: 0 0 40px rgba(255, 46, 99, 0.3);
+            animation: bounceIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes bounceIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-box i { font-size: 45px; color: var(--neon-red); margin-bottom: 15px; }
+        .popup-box h2 { font-family: 'Orbitron'; font-size: 16px; margin: 0 0 10px; color: #fff; }
+        .popup-box p { font-size: 12px; color: #888; margin-bottom: 25px; line-height: 1.5; }
+        
+        .close-btn {
+            width: 100%; padding: 12px; background: none;
+            border: 1px solid var(--neon-red); color: var(--neon-red);
+            font-family: 'Orbitron'; font-weight: bold; border-radius: 8px;
+            cursor: pointer; transition: 0.3s;
+        }
+        .close-btn:hover { background: var(--neon-red); color: #fff; }
+
+        .footer-text { margin-top: 30px; font-size: 9px; color: #444; letter-spacing: 2px; font-family: 'Orbitron'; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-effect"></div>
+
+    <a href="https://duongmune.github.io/Chanelmodteam/hackfree.html" class="back-btn">
+        <i class="fa-solid fa-chevron-left"></i> BACK
+    </a>
+
+    <div class="hack-card">
+        <img src="ff.png" class="ff-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/5/5e/Garena_Free_fire_icon.png'">
+        
+        <h2 class="title">HACK FREE FIRE</h2>
+
+        <div class="btn-container">
+            <button class="action-btn btn-apk" onclick="openPopup()">
+                <i class="fa-solid fa-download"></i> TẢI XUỐNG APK
+            </button>
+
+            <button class="action-btn btn-key" onclick="openPopup()">
+                <i class="fa-solid fa-key"></i> GET KEY FREE
+            </button>
+        </div>
+
+        <div class="footer-text">INVISIBLE MOD TEAM</div>
+    </div>
+
+    <div id="popup">
+        <div class="popup-box">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h2>HỆ THỐNG BẢO TRÌ</h2>
+            <p>Hiện tại máy chủ đang cập nhật phiên bản Bypass mới. Vui lòng quay lại sau!</p>
+            <button class="close-btn" onclick="closePopup()">ĐÃ HIỂU</button>
+        </div>
+    </div>
+
+    <script>
+        // Hàm đóng mở Popup
+        function openPopup() { document.getElementById('popup').style.display = 'flex'; }
+        function closePopup() { document.getElementById('popup').style.display = 'none'; }
+
+        // Hiệu ứng hạt nền
+        const bg = document.getElementById('bg-effect');
+        for (let i = 0; i < 40; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.width = '2px';
+            star.style.height = '2px';
+            star.style.background = i % 2 === 0 ? '#00ff9d' : '#00d2ff';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.opacity = Math.random();
+            star.style.animation = `moveUp ${Math.random() * 5 + 5}s linear infinite`;
+            bg.appendChild(star);
+        }
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes moveUp {
+                0% { transform: translateY(0); opacity: 0; }
+                50% { opacity: 0.5; }
+                100% { transform: translateY(-100vh); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+</html>
